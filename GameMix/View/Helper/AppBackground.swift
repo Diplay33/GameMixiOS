@@ -18,6 +18,7 @@ struct AppBackground<Content: View>: View {
         contentView()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.background)
+//            .padding(.horizontal, 30)
     }
 }
 
