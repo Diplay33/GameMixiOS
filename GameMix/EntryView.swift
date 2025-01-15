@@ -8,28 +8,57 @@
 import SwiftUI
 
 struct EntryView: View {
+    @State var isChoosingGame: Bool = false
+    
     var body: some View {
         NavigationStack {
             AppBackground {
                 VStack {
                     Spacer()
                     
-                    Image("logoCompleteTransparent")
+                    VStack {
+                        Image("logoPartialTransparent")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: .infinity)
+                            .padding(.horizontal, isChoosingGame ? 100 : 0)
+                        
+                        Image("logoLabel")
+                    }
                     
                     Spacer()
                     
-                    NavigationLink(destination: Text("Hello, World!")) {
-                        ZStack {
-                            Rectangle()
-                                .cornerRadius(20)
-                                .frame(height: 60)
-                                .frame(maxWidth: .infinity)
-                                .padding(.horizontal)
-                            
-                            Text("Jouer")
-                                .font(.system(size: 32, weight: .bold, design: .rounded))
-                                .foregroundStyle(Color.lightLabel)
+                    if isChoosingGame {
+                        AppBigNavigationLink(label: "Belote") {
+                            BelotePlayersView()
                         }
+                        .foregroundColor(.primary)
+                        .tint(.lightLabel)
+                        
+                        AppBigButton(label: "Président", foregroundColor: .primary) {
+                            withAnimation {
+                                isChoosingGame.toggle()
+                            }
+                        }
+                        .foregroundColor(.primary)
+                        .tint(.lightLabel)
+                        
+                        AppBigButton(label: "Pyramide", foregroundColor: .primary) {
+                            withAnimation {
+                                isChoosingGame.toggle()
+                            }
+                        }
+                        .foregroundColor(.primary)
+                        .tint(.lightLabel)
+                    }
+                    else {
+                        AppBigButton(label: "Jouer") {
+                            withAnimation {
+                                isChoosingGame.toggle()
+                            }
+                        }
+                        .foregroundColor(.lightLabel)
+                        .tint(.p)
                     }
                     
                     Spacer()
