@@ -18,16 +18,23 @@ struct BelotePlayersView: View {
                     Section(header: Text("AJOUTER UN JOUEUR")) {
                         ZStack {
                             TextField("Saisissez le nom du joueur...", text: $playerNameDraft)
+                                .autocorrectionDisabled()
                             
                             Button(action: addPlayerButtonOnPress) {
-                                Image(systemName: "plus")
-                                    .font(.system(size: 18, weight: .bold, design: .rounded))
-                                    .foregroundColor(.white)
-                                    .frame(width: 28, height: 28)
-                                    .background(.s)
-                                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                                ZStack {
+                                    Rectangle()
+                                        .tint(.s)
+                                        .frame(width: 28, height: 28)
+                                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                                        
+                                    Image(systemName: "plus")
+                                        .foregroundColor(.lightLabel)
+                                        .font(.system(size: 18, weight: .bold, design: .rounded))
+                                        .frame(width: 28, height: 28)
+                                }
                             }
                             .frame(maxWidth: .infinity, alignment: .trailing)
+                            .disabled(playersList.count >= 4)
                         }
                         .listRowBackground(Color(uiColor: .systemGroupedBackground).opacity(0.5))
                     }
