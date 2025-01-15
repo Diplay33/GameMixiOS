@@ -32,7 +32,7 @@ struct EntryView: View {
                         AppBigNavigationLink(label: "Belote") {
                             BelotePlayersView()
                         }
-                        .foregroundColor(.primary)
+                        .foregroundColor(.p)
                         .tint(.lightLabel)
                         
                         AppBigButton(label: "Président", foregroundColor: .primary) {
@@ -40,7 +40,7 @@ struct EntryView: View {
                                 isChoosingGame.toggle()
                             }
                         }
-                        .foregroundColor(.primary)
+                        .foregroundColor(.p)
                         .tint(.lightLabel)
                         
                         AppBigButton(label: "Pyramide", foregroundColor: .primary) {
@@ -48,7 +48,7 @@ struct EntryView: View {
                                 isChoosingGame.toggle()
                             }
                         }
-                        .foregroundColor(.primary)
+                        .foregroundColor(.p)
                         .tint(.lightLabel)
                     }
                     else {
