@@ -26,6 +26,9 @@ struct AppBigButton: View {
                 Text(label)
                     .font(.system(size: 32, weight: .bold, design: .rounded))
                     .foregroundStyle(foregroundColor)
+                    .padding(.horizontal, 35)
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
             }
         }
     }

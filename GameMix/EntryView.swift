@@ -35,7 +35,7 @@ struct EntryView: View {
                         .foregroundColor(.p)
                         .tint(.lightLabel)
                         
-                        AppBigButton(label: "Président", foregroundColor: .primary) {
+                        AppBigButton(label: "Président") {
                             withAnimation {
                                 isChoosingGame.toggle()
                             }
@@ -43,13 +43,13 @@ struct EntryView: View {
                         .foregroundColor(.p)
                         .tint(.lightLabel)
                         
-                        AppBigButton(label: "Pyramide", foregroundColor: .primary) {
+                        AppBigButton(label: "Connecter un GamiXer") {
                             withAnimation {
                                 isChoosingGame.toggle()
                             }
                         }
-                        .foregroundColor(.p)
-                        .tint(.lightLabel)
+                        .foregroundColor(.lightLabel)
+                        .tint(.p)
                     }
                     else {
                         AppBigButton(label: "Jouer") {
