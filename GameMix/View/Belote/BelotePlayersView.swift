@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BelotePlayersView: View {
-    @State var playersList: [String] = []
+    @State var playersList: [(UUID, String)] = []
     @State var playerNameDraft: String = ""
     
     var body: some View {
@@ -46,10 +46,10 @@ struct BelotePlayersView: View {
                             .listRowBackground(Color(uiColor: .systemGroupedBackground).opacity(0.5))
                     }
                     else {
-                        ForEach(playersList, id: \.self) { player in
+                        ForEach(playersList, id: \.0) { player in
                             ZStack {
                                 HStack {
-                                    Text(player)
+                                    Text(player.1)
                                         .foregroundStyle(Color.p)
                                     
                                     Spacer()
@@ -86,12 +86,12 @@ struct BelotePlayersView: View {
     private func addPlayerButtonOnPress() {
         guard !playerNameDraft.isEmpty else { return }
         withAnimation {
-            playersList.append(playerNameDraft)
+            playersList.append((UUID(), playerNameDraft))
         }
         playerNameDraft = ""
     }
     
-    private func clearButtonOnPress(_ player: String) {
+    private func clearButtonOnPress(_ player: (UUID, String)) {
         withAnimation {
             playersList.removeAll(where: { $0 == player })
         }
