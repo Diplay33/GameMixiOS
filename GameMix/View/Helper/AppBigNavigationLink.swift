@@ -20,6 +20,8 @@ struct AppBigNavigationLink<Destination: View>: View {
                     .frame(height: 60)
                     .frame(maxWidth: .infinity)
                     .padding(.horizontal)
+                    .shadow(color: .white.opacity(0.6), radius: 4, x: -4, y: -4)
+                    .shadow(color: .black.opacity(0.1), radius: 3, x: 4, y: 4)
                 
                 Text(label)
                     .font(.system(size: 32, weight: .bold, design: .rounded))
