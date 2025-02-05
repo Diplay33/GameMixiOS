@@ -17,8 +17,7 @@ struct AppBackground<Content: View>: View {
     var body: some View {
         contentView()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.background)
-//            .padding(.horizontal, 30)
+            .background(Color.background.ignoresSafeArea())
     }
 }
 

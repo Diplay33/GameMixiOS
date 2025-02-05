@@ -75,6 +75,7 @@ struct GamePlayersView: View {
                 .scrollContentBackground(.hidden)
                 .navigationTitle(Text(gameMode.rawValue))
                 .navigationBarTitleDisplayMode(.large)
+                .scrollDismissesKeyboard(.interactively)
                 
                 AppBigNavigationLink(label: "Jouer") {
                     EmptyView()
