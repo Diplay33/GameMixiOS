@@ -30,15 +30,13 @@ struct EntryView: View {
                     
                     if isChoosingGame {
                         AppBigNavigationLink(label: "Belote") {
-                            BelotePlayersView()
+                            GamePlayersView(gameMode: .belote)
                         }
                         .foregroundColor(.p)
                         .tint(.lightLabel)
                         
-                        AppBigButton(label: "Président") {
-                            withAnimation {
-                                isChoosingGame.toggle()
-                            }
+                        AppBigNavigationLink(label: "Président") {
+                            GamePlayersView(gameMode: .president)
                         }
                         .foregroundColor(.p)
                         .tint(.lightLabel)
@@ -66,6 +64,11 @@ struct EntryView: View {
             }
         }
     }
+}
+
+enum GameMode: String {
+    case belote = "Belote"
+    case president = "Président"
 }
 
 #Preview {

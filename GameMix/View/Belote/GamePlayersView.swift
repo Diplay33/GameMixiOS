@@ -1,5 +1,5 @@
 //
-//  BelotePlayersView.swift
+//  GamePlayersView.swift
 //  GameMix
 //
 //  Created by Jacques HU on 15/01/2025.
@@ -7,9 +7,11 @@
 
 import SwiftUI
 
-struct BelotePlayersView: View {
+struct GamePlayersView: View {
     @State var playersList: [(UUID, String)] = []
     @State var playerNameDraft: String = ""
+    
+    var gameMode: GameMode
     
     var body: some View {
         AppBackground {
@@ -34,7 +36,7 @@ struct BelotePlayersView: View {
                                 }
                             }
                             .frame(maxWidth: .infinity, alignment: .trailing)
-                            .disabled(playersList.count >= 4)
+                            .disabled(playersList.count >= (gameMode == .belote ? 4 : 7))
                         }
                         .listRowBackground(Color(uiColor: .systemGroupedBackground).opacity(0.5))
                     }
@@ -69,7 +71,7 @@ struct BelotePlayersView: View {
                     }
                 }
                 .scrollContentBackground(.hidden)
-                .navigationTitle(Text("Belote"))
+                .navigationTitle(Text(gameMode.rawValue))
                 .navigationBarTitleDisplayMode(.large)
                 
                 AppBigNavigationLink(label: "Jouer") {
@@ -78,7 +80,7 @@ struct BelotePlayersView: View {
                 .foregroundColor(.lightLabel)
                 .tint(.s)
                 .padding(.bottom)
-                .disabled(playersList.count < 4)
+                .disabled(playersList.count < (gameMode == .belote ? 4 : 2))
             }
         }
     }
@@ -99,5 +101,5 @@ struct BelotePlayersView: View {
 }
 
 #Preview {
-    BelotePlayersView()
+    GamePlayersView(gameMode: .belote)
 }
