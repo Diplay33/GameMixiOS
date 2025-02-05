@@ -41,32 +41,34 @@ struct GamePlayersView: View {
                         .listRowBackground(Color(uiColor: .systemGroupedBackground).opacity(0.5))
                     }
                     
-                    if playersList.isEmpty {
-                        Text("Aucun joueur saisi")
-                            .foregroundStyle(Color.p)
-                            .frame(maxWidth: .infinity)
-                            .listRowBackground(Color(uiColor: .systemGroupedBackground).opacity(0.5))
-                    }
-                    else {
-                        ForEach(playersList, id: \.0) { player in
-                            ZStack {
-                                HStack {
-                                    Text(player.1)
-                                        .foregroundStyle(Color.p)
+                    Section(header: playersList.isEmpty ? nil : Text(processPlayersHeaderLabel())) {
+                        if playersList.isEmpty {
+                            Text("Aucun joueur saisi")
+                                .foregroundStyle(Color.p)
+                                .frame(maxWidth: .infinity)
+                                .listRowBackground(Color(uiColor: .systemGroupedBackground).opacity(0.5))
+                        }
+                        else {
+                            ForEach(playersList, id: \.0) { player in
+                                ZStack {
+                                    HStack {
+                                        Text(player.1)
+                                            .foregroundStyle(Color.p)
+                                        
+                                        Spacer()
+                                    }
                                     
-                                    Spacer()
+                                    Button {
+                                        clearButtonOnPress(player)
+                                    }
+                                    label: {
+                                        Image(systemName: "multiply.circle.fill")
+                                    }
+                                    .frame(maxWidth: .infinity, alignment: .trailing)
                                 }
-                                
-                                Button {
-                                    clearButtonOnPress(player)
-                                }
-                                label: {
-                                    Image(systemName: "multiply.circle.fill")
-                                }
-                                .frame(maxWidth: .infinity, alignment: .trailing)
+                                .listRowBackground(Color(uiColor: .systemGroupedBackground).opacity(0.5))
+                                .transition(.slide)
                             }
-                            .listRowBackground(Color(uiColor: .systemGroupedBackground).opacity(0.5))
-                            .transition(.slide)
                         }
                     }
                 }
@@ -97,6 +99,10 @@ struct GamePlayersView: View {
         withAnimation {
             playersList.removeAll(where: { $0 == player })
         }
+    }
+    
+    private func processPlayersHeaderLabel() -> String {
+        return playersList.count > 1 ? "\(playersList.count) JOUEURS SAISIS" : "1 JOUEUR SAISI"
     }
 }
 
