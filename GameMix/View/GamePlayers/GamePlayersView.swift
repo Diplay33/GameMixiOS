@@ -26,7 +26,7 @@ struct GamePlayersView: View {
                 .scrollDismissesKeyboard(.interactively)
                 
                 AppBigNavigationLink(label: "Jouer") {
-                    EmptyView()
+                    InGameView()
                 }
                 .foregroundColor(.lightLabel)
                 .tint(.s)
