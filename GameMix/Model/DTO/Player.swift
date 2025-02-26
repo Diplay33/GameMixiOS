@@ -10,5 +10,4 @@ import Foundation
 struct Player: Identifiable, Equatable {
     var id: UUID
     var name: String
-    var order: Int?
 }
