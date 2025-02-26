@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct InGamePlayer: View {
+    var playerOrder: Int
     var playing: Bool
     
     var body: some View {
@@ -17,7 +18,7 @@ struct InGamePlayer: View {
                 .stroke(playing ? Color.s : Color.p, lineWidth: 8)
                 .frame(width: 100, height: 100)
             
-            Text("P1")
+            Text("P\(playerOrder)")
                 .font(.system(size: 32, weight: .bold, design: .rounded))
                 .foregroundStyle(Color.p)
         }
@@ -25,5 +26,5 @@ struct InGamePlayer: View {
 }
 
 #Preview {
-    InGamePlayer(playing: true)
+    InGamePlayer(playerOrder: 1, playing: true)
 }

@@ -8,34 +8,13 @@
 import SwiftUI
 
 struct InGameView: View {
+    var playersList: [(UUID, String)]
+    
     var body: some View {
         AppBackground {
             VStack {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 30)
-                        .fill(Color.t)
-                        .stroke(Color.s, lineWidth: 10)
-                        .padding(.horizontal, 50)
-
-                    VStack(spacing: 40) {
-                        HStack {
-                            InGamePlayer(playing: true)
-                            
-                            Spacer()
-                            
-                            InGamePlayer(playing: false)
-                        }
-
-                        HStack {
-                            InGamePlayer(playing: false)
-                            
-                            Spacer()
-                            
-                            InGamePlayer(playing: false)
-                        }
-                    }
-                }
-                .padding()
+                InGameBoard(playersList: playersList)
+                    .padding()
                 
                 VStack(spacing: 15) {
                     AppBigButton(label: "Commencer") {
@@ -66,5 +45,5 @@ struct InGameView: View {
 }
 
 #Preview {
-    InGameView()
+    InGameView(playersList: [])
 }
