@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct InGameBoard: View {
+    @State var playingPlayer: Player?
+    
     var playersList: [Player]
     
     var body: some View {
@@ -25,7 +27,8 @@ struct InGameBoard: View {
                     InGamePlayerRow(
                         leftPlayer: playersList[row + row],
                         rightPlayer: playersList.indices.contains(row + row + 1) ? playersList[row + row + 1] : nil,
-                        rowIndex: row
+                        rowIndex: row,
+                        playingPlayer: playingPlayer
                     )
                     
                     if row != Array(0..<Int(ceil(Double(playersList.count) / 2.0))).last || playersList.count % 2 == 0 {
@@ -34,9 +37,12 @@ struct InGameBoard: View {
                 }
             }
         }
+        .onAppear {
+            playingPlayer = playersList.first
+        }
     }
 }
 
 #Preview {
-    InGameBoard(playersList: [])
+    InGameBoard(playingPlayer: Player(id: UUID(), name: ""), playersList: [])
 }
