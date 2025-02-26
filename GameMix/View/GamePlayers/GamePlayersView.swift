@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GamePlayersView: View {
-    @State var playersList: [(UUID, String)] = []
+    @State var playersList: [Player] = []
     
     var gameMode: GameMode
     

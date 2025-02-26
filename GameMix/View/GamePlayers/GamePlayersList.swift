@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GamePlayersList: View {
-    @Binding var playersList: [(UUID, String)]
+    @Binding var playersList: [Player]
     
     var body: some View {
         Section(header: playersList.isEmpty ? nil : Text(processPlayersHeaderLabel())) {
@@ -19,7 +19,7 @@ struct GamePlayersList: View {
                     .listRowBackground(Color(uiColor: .systemGroupedBackground).opacity(0.5))
             }
             else {
-                ForEach(playersList, id: \.0) { player in
+                ForEach(playersList) { player in
                     GamePlayersRow(playersList: $playersList, player: player)
                 }
             }

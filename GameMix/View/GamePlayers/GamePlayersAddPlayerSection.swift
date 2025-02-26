@@ -10,7 +10,7 @@ import SwiftUI
 struct GamePlayersAddPlayerSection: View {
     @State var playerNameDraft: String = ""
     
-    @Binding var playersList: [(UUID, String)]
+    @Binding var playersList: [Player]
     
     var gameMode: GameMode
     
@@ -45,7 +45,7 @@ struct GamePlayersAddPlayerSection: View {
     private func addPlayerButtonOnPress() {
         guard !playerNameDraft.isEmpty else { return }
         withAnimation {
-            playersList.append((UUID(), playerNameDraft))
+            playersList.append(Player(id: UUID(), name: playerNameDraft))
         }
         playerNameDraft = ""
     }

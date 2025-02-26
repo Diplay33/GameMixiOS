@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct InGamePlayerRow: View {
-    var leftPlayer: (UUID, String)
-    var rightPlayer: (UUID, String)
+    var leftPlayer: Player
+    var rightPlayer: Player
     
     var body: some View {
         HStack {
@@ -23,5 +23,5 @@ struct InGamePlayerRow: View {
 }
 
 #Preview {
-    InGamePlayerRow(leftPlayer: (UUID(), ""), rightPlayer: (UUID(), ""))
+    InGamePlayerRow(leftPlayer: Player(id: UUID(), name: ""), rightPlayer: Player(id: UUID(), name: ""))
 }

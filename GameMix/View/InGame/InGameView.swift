@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct InGameView: View {
-    var playersList: [(UUID, String)]
+    var playersList: [Player]
     
     var body: some View {
         AppBackground {

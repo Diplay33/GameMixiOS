@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct GamePlayersRow: View {
-    @Binding var playersList: [(UUID, String)]
+    @Binding var playersList: [Player]
     
-    var player: (UUID, String)
+    var player: Player
     
     var body: some View {
         ZStack {
             HStack {
-                Text(player.1)
+                Text(player.name)
                     .foregroundStyle(Color.p)
                 
                 Spacer()
@@ -33,7 +33,7 @@ struct GamePlayersRow: View {
         .transition(.slide)
     }
     
-    private func clearButtonOnPress(_ player: (UUID, String)) {
+    private func clearButtonOnPress(_ player: Player) {
         withAnimation {
             playersList.removeAll(where: { $0 == player })
         }
@@ -41,5 +41,5 @@ struct GamePlayersRow: View {
 }
 
 #Preview {
-    GamePlayersRow(playersList: .constant([]), player: (UUID(), ""))
+    GamePlayersRow(playersList: .constant([]), player: Player(id: UUID(), name: ""))
 }
